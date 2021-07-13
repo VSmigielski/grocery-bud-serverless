@@ -90,8 +90,9 @@ function App() {
         </div>
       </form>
       <div className="grocery-container">
-        <List items={list} name={name} removeItem={removeItem} editItem={editItem}/>
-        <ClearItems onClick={clearList}/>
+        <List items={list} name={name} removeItem={removeItem} 
+        editItem={editItem}/>
+        <ClearItems onClick={clearList} list={list}/>
       </div>
     </section>
     </EasybaseProvider>

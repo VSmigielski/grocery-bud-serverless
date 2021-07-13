@@ -4,7 +4,7 @@ import { FaTrash } from 'react-icons/fa';
 function DeleteButton({title}) {
     const { Frame, sync } = useEasybase();
   
-    const handleDelete = ({}) => {
+    const handleDelete = () => {
       const deleteTitle = title;
       
       Frame().pop({

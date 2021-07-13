@@ -10,7 +10,7 @@ function ClearItems() {
         Query({ queryName: "AllTitles", tableName: "GROCERYLIST" }).then(res => {
           setArr(res);
         });
-      }, [Query])
+      }, [])
 
     const handleClear = () => {
         console.log(arr);

@@ -9,7 +9,7 @@ const List = ({list}) => {
   useEffect(() => {
     configureFrame({ tableName: "GROCERYLIST", limit: 30 });
     sync();
-  }, [configureFrame, sync]);
+  }, [list]);
 
   return (
       <>

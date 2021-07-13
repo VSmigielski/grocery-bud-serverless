@@ -4,6 +4,7 @@ import Alert from './Alert'
 import { EasybaseProvider, useEasybase } from 'easybase-react';
 import ebconfig from './ebconfig';
 import NewGroceryButton from './NewGroceryButton';
+import ClearItems from './ClearItems';
 
 // const getLocalStorage = () => {
 //   let list = localStorage.getItem('list');
@@ -21,8 +22,6 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({show:false, msg:'',type:''});
-
-  const { Frame, sync, configureFrame } = useEasybase();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,15 +75,9 @@ function App() {
   //   localStorage.setItem('list', JSON.stringify(list))
   // }, [list])
 
-  useEffect(() => {
-    configureFrame({ tableName: "GROCERYLIST", limit: 10 });
-    sync();
-  }, [list]);
-
   return (
     <>
     <EasybaseProvider ebconfig={ebconfig}>
-      <NewGroceryButton/>
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} removeAlert={showAlert}
@@ -93,20 +86,13 @@ function App() {
         <div className="form-control">
           <input type="text" className="grocery" 
           placeholder="Ex. Eggs" value={name} onChange={(e) => setName(e.target.value)}/>
-          <NewGroceryButton type="submit" className="submit-btn">
-            {isEditing ? 'Edit' : 'Submit'}
-          </NewGroceryButton>
+          <NewGroceryButton isEditing={isEditing} name={name}/>
         </div>
       </form>
-      {list.length > 0 && (
       <div className="grocery-container">
-        <List items={list} removeItem={removeItem} editItem={editItem}/>
-        <button className="clear-btn" onClick={clearList}>
-          Clear Items
-        </button>
+        <List items={list} name={name} removeItem={removeItem} editItem={editItem}/>
+        <ClearItems onClick={clearList}/>
       </div>
-      )}
-      
     </section>
     </EasybaseProvider>
     </>

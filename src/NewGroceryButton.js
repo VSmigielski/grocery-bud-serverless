@@ -1,10 +1,10 @@
-import { EasybaseProvider, useEasybase } from 'easybase-react';
+import { useEasybase } from 'easybase-react';
 
-function NewGroceryButton() {
+function NewGroceryButton({isEditing, name}) {
     const { Frame, sync } = useEasybase();
   
     const handleClick = () => {
-      const newTitle = prompt("Please enter a grocery item");
+      const newTitle = name;
       
       Frame().push({
         title: newTitle,
@@ -13,7 +13,7 @@ function NewGroceryButton() {
       sync();
     }
   
-    return <button onClick={handleClick}>Submit</button>
+    return <button onClick={handleClick} type="submit" className="submit-btn">{isEditing ? 'Edit' : 'Submit'}</button>
   }
 
   export default NewGroceryButton

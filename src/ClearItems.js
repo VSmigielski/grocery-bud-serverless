@@ -2,11 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useEasybase } from 'easybase-react';
 
 function ClearItems() {
-    const { Frame, sync } = useEasybase();
-
-    const {
-        Query
-      } = useEasybase()
+    const { Frame, sync, Query } = useEasybase();
     
       const [arr, setArr] = useState([]);
     
@@ -14,7 +10,7 @@ function ClearItems() {
         Query({ queryName: "AllTitles", tableName: "GROCERYLIST" }).then(res => {
           setArr(res);
         });
-      }, [])
+      }, [Query])
 
     const handleClear = () => {
         console.log(arr);

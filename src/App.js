@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import List from './List'
 import Alert from './Alert'
-import { EasybaseProvider, useEasybase } from 'easybase-react';
+import { EasybaseProvider} from 'easybase-react';
 import ebconfig from './ebconfig';
 import NewGroceryButton from './NewGroceryButton';
 import ClearItems from './ClearItems';
@@ -70,10 +70,6 @@ function App() {
     setEditID(id)
     setName(specificItem.title)
   }
-
-  // useEffect(() => {
-  //   localStorage.setItem('list', JSON.stringify(list))
-  // }, [list])
 
   return (
     <>

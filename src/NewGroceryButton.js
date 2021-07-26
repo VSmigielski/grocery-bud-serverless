@@ -1,6 +1,6 @@
 import { useEasybase } from 'easybase-react';
 
-function NewGroceryButton({isEditing, name}) {
+function NewGroceryButton({name}) {
     const { Frame, sync } = useEasybase();
   
     const handleClick = () => {
@@ -13,7 +13,7 @@ function NewGroceryButton({isEditing, name}) {
       sync();
     }
   
-    return <button onClick={handleClick} type="submit" className="submit-btn">{isEditing ? 'Edit' : 'Submit'}</button>
+    return <button onClick={handleClick} type="submit" className="submit-btn">Submit</button>
   }
 
   export default NewGroceryButton

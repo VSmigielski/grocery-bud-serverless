@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
 import { useEasybase } from 'easybase-react';
-import { FaEdit } from 'react-icons/fa'
 import DeleteButton from './DeleteButton';
 
 const List = ({list}) => {
@@ -19,10 +18,7 @@ const List = ({list}) => {
             return <article key={id} className="grocery-item">
                 <p className="title">{title}</p>
                 <div className="btn-container">
-                    <button type="button" className="edit-btn">
-                        <FaEdit/>
-                    </button>
-                    <DeleteButton title={title}/> 
+                    <DeleteButton _key={id} title={title}/> 
                 </div>
             </article>
         })}

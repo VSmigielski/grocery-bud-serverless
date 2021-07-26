@@ -1,19 +1,17 @@
+import React from 'react'
 import { useEasybase } from 'easybase-react';
 import { FaTrash } from 'react-icons/fa';
 
-function DeleteButton({title}) {
-    const { Frame, sync } = useEasybase();
-  
-    const handleDelete = () => {
-      const deleteTitle = title;
-      
-      Frame().pop({
-        title: deleteTitle,
-      })
-      
-      sync();
-    }
-  
+function DeleteButton({_key}) {
+
+    const key = _key;
+
+    const { db } = useEasybase();
+
+  const handleDelete = async () => {
+    await db('GROCERYLIST').delete().where({ key }).one();
+  }
+
     return <button onClick={handleDelete} type="button" className="delete-btn"><FaTrash></FaTrash></button>
   }
 

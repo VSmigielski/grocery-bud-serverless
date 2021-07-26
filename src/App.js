@@ -64,12 +64,12 @@ function App() {
     setList(list.filter((item) => item.id !== id))
   }
 
-  const editItem = (id) => {
+  /* const editItem = (id) => {
     const specificItem = list.find((item) => item.id === id);
     setIsEditing(true);
     setEditID(id)
     setName(specificItem.title)
-  }
+  } */
 
   return (
     <>
@@ -82,12 +82,11 @@ function App() {
         <div className="form-control">
           <input type="text" className="grocery" 
           placeholder="Ex. Eggs" value={name} onChange={(e) => setName(e.target.value)}/>
-          <NewGroceryButton isEditing={isEditing} name={name}/>
+          <NewGroceryButton name={name}/>
         </div>
       </form>
       <div className="grocery-container">
-        <List items={list} name={name} removeItem={removeItem} 
-        editItem={editItem}/>
+        <List items={list} name={name} />
         <ClearItems onClick={clearList} list={list}/>
       </div>
     </section>
